@@ -1,0 +1,27 @@
+import 'package:hive/hive.dart';
+
+@HiveType(typeId: 1)
+class UserModel {
+  @HiveField(0)
+  String name;
+
+  @HiveField(1)
+  String email;
+
+  @HiveField(2)
+  String password;
+
+  @HiveField(3)
+  String username;
+
+  @HiveField(4)
+  String address;
+
+  UserModel({
+    required this.name,
+    required this.email,
+    required this.password,
+    required this.username,
+    required this.address,
+  });
+}
