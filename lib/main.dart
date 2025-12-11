@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_study/day1/Model/UserModel.dart';
+import 'package:flutter_study/day1/ViewModel/UserViewModel.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
-import 'day1/Model/UserModel.dart';
-import 'path/to/UserViewModel.dart'; // Add the correct path to your UserViewModel file
-
+import 'package:flutter_study/dashboard/dayListScreen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Hive.initFlutter();
+  Hive.registerAdapter(UserModelAdapter());
 
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) =>UserModel()),
+       ChangeNotifierProvider(create: (_) =>UserViewModel()),
       ],
       child: const MyApp(),
     ),
@@ -23,8 +24,6 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -47,7 +46,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home:  UserRegistration(),
+      home:  DayListScreen(),
     );
   }
 }
