@@ -21,15 +21,17 @@ class Doctor_user_model {
   @HiveField(5)
   String clinicCity;
 
-  @ HiveField(6)
+  @HiveField(6)
   String fees;
 
   @HiveField(7)
   String timings;
- 
+
   @HiveField(8)
   String availableDays;
 
+  @HiveField(9)
+  String gender;
 
   Doctor_user_model({
     required this.doctorId,
@@ -41,6 +43,6 @@ class Doctor_user_model {
     required this.fees,
     required this.timings,
     required this.availableDays,
+    required this.gender,
   });
-
 }

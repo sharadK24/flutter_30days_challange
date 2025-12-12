@@ -26,13 +26,14 @@ class DoctorusermodelAdapter extends TypeAdapter<Doctor_user_model> {
       fees: fields[6] as String,
       timings: fields[7] as String,
       availableDays: fields[8] as String,
+      gender: fields[9] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, Doctor_user_model obj) {
     writer
-      ..writeByte(9)
+      ..writeByte(10)
       ..writeByte(0)
       ..write(obj.doctorId)
       ..writeByte(1)
@@ -50,7 +51,9 @@ class DoctorusermodelAdapter extends TypeAdapter<Doctor_user_model> {
       ..writeByte(7)
       ..write(obj.timings)
       ..writeByte(8)
-      ..write(obj.availableDays);
+      ..write(obj.availableDays)
+      ..writeByte(9)
+      ..write(obj.gender);
   }
 
   @override

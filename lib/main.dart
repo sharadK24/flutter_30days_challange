@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study/day1/Model/UserModel.dart';
 import 'package:flutter_study/day1/ViewModel/UserViewModel.dart';
+import 'package:flutter_study/day2/Model/Doctor_user_model.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
@@ -10,6 +11,9 @@ void main() async {
 
   await Hive.initFlutter();
   Hive.registerAdapter(UserModelAdapter());
+  Hive.registerAdapter(DoctorusermodelAdapter());
+  Hive.registerAdapter(AppointmentModelAdapter());
+  
 
   runApp(
     MultiProvider(
