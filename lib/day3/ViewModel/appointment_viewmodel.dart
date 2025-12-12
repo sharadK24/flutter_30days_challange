@@ -69,7 +69,6 @@ class AppointmentViewModel extends ChangeNotifier {
     );
 
     await repo.addAppointment(appointment);
-
     notifyListeners();
   }
 }

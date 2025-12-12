@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study/day1/View/UserRegistration.dart';
 import 'package:flutter_study/day2/View/Doctor_Registration.dart';
+import 'package:flutter_study/day3/View/Appointment_Registration.dart'; 
 
 class DayListScreen extends StatelessWidget {
-  final List<String> days = ["Day 1", "Day 2","Day 3"];
+  final List<String> days = ["Day 1", "Day 2", "Day 3"];
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +28,17 @@ class DayListScreen extends StatelessWidget {
                     context,
                     MaterialPageRoute(builder: (_) => UserRegistration()),
                   );
-                } else if (index == 1) {
+                } 
+                else if (index == 1) {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (_) => DoctorRegistration()),
+                  );
+                } 
+                else if (index == 2) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => AppointmentRegistration()),
                   );
                 }
               },

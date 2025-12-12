@@ -1,18 +1,16 @@
 import 'package:hive/hive.dart';
+import '../Model/AppointmentModel.dart';
 
-class  Appointmentmodel {
+class AppointmentRepository {
   final String boxName = "appointmentsBox";
-  Future<void> addAppointment(Appointmentmodel appointment) async {
-    final box = await Hive.openBox<Appointmentmodel>(boxName);
+
+  Future<void> addAppointment(AppointmentModel appointment) async {
+    final box = await Hive.openBox<AppointmentModel>(boxName);
     await box.add(appointment);
-  }     
+  }
 
-  Future<List<Appointmentmodel>> getAllAppointments() async {
-    final box = await Hive.openBox<Appointmentmodel>(boxName);
+  Future<List<AppointmentModel>> getAllAppointments() async {
+    final box = await Hive.openBox<AppointmentModel>(boxName);
     return box.values.toList();
-  } 
-
-
-
-
+  }
 }
