@@ -3,6 +3,7 @@ import 'package:flutter_study/day1/Model/UserModel.dart';
 import 'package:flutter_study/day1/ViewModel/UserViewModel.dart';
 import 'package:flutter_study/day2/Model/Doctor_user_model.dart';
 import 'package:flutter_study/day3/Model/AppointmentModel.dart';
+import 'package:flutter_study/day4/Model/PaymentModel.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
@@ -14,6 +15,7 @@ void main() async {
   Hive.registerAdapter(UserModelAdapter());
   Hive.registerAdapter(DoctorusermodelAdapter());
   Hive.registerAdapter(AppointmentModelAdapter());
+  Hive.registerAdapter(PaymentModelAdapter());
   
 
   runApp(
