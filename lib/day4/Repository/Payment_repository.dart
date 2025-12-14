@@ -6,7 +6,13 @@ class PaymentRepository {
 
   Future<void> addPayment(PaymentModel payment) async {
     final box = await Hive.openBox<PaymentModel>(boxName);
-    await box.add(payment);
+    
+    
+    int index = await box.add(payment);
+
+    print("Payment saved at index: $index");
+    print("Total payments in Hive: ${box.length}");
+    print("Saved Payment: ${box.get(index)}");
   }
 
   Future<List<PaymentModel>> getAllPayments() async {

@@ -21,7 +21,6 @@ class _PaymentRegistrationState extends State<PaymentRegistration> {
   final TextEditingController paymentMethod = TextEditingController();
   final TextEditingController status = TextEditingController();
   final TextEditingController transactionId = TextEditingController();
-
   Future<void> registerPayment() async {
     if (_formKey.currentState!.validate()) {
       final payment = PaymentModel(
@@ -91,9 +90,7 @@ class _PaymentRegistrationState extends State<PaymentRegistration> {
                 buildTextField("Payment Method", paymentMethod),
                 buildTextField("Status", status),
                 buildTextField("Transaction ID", transactionId),
-
                 const SizedBox(height: 20),
-
                 ElevatedButton(
                   onPressed: registerPayment,
                   child: const Text("Register Payment"),
