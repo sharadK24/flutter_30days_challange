@@ -17,7 +17,7 @@ class _PrescriptionRegistrationState extends State<PrescriptionRegistration> {
   final TextEditingController userId = TextEditingController();
   final TextEditingController medicinesList = TextEditingController();
   final TextEditingController duration = TextEditingController();
-  final TextEditingController notes = TextEditingController();
+  final TextEditingController notes = TextEditingController();    
   final TextEditingController createdAt = TextEditingController();
 
   Future<void> registerPrescription() async {
@@ -26,7 +26,7 @@ class _PrescriptionRegistrationState extends State<PrescriptionRegistration> {
         prescriptionId: prescriptionId.text,
         appointmentId: appointmentId.text,
         doctorId: doctorId.text,
-        userId: userId.text,
+        userId: userId.text,  
         medicinesList: medicinesList.text,
         duration: duration.text,
         notes: notes.text,
@@ -97,4 +97,8 @@ class _PrescriptionRegistrationState extends State<PrescriptionRegistration> {
       ),
     );
   }
-}
+} 
+
+
+
+
