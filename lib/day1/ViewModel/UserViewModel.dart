@@ -50,4 +50,10 @@ class UserViewModel extends ChangeNotifier {
     await repo.addUser(user);
     notifyListeners();
   }
+   List<UserModel> users = [];
+
+  Future<void> fetchUsers() async {
+    users = await repo.getAllUsers();
+    notifyListeners();
+  }
 }
