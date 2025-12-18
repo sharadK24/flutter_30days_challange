@@ -45,7 +45,7 @@ class _UserlistState extends State<Userlist> {
                 margin: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                 child: ListTile(
                   title: Text("Name: ${user.name}"),
-                  subtitle: Text("Email: ${user.email}\nCity:"),
+                  subtitle: Text("Email: ${user.email}"),
                   onTap: (){
                     Navigator.push(
                       context,
