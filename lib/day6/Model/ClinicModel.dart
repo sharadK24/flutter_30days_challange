@@ -21,8 +21,6 @@ class ClinicModel {
 
   @HiveField(6)
   final String services;
-
-
   @HiveField(7)
   final String contactNumber;
 

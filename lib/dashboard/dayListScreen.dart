@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study/day1/View/UserRegistration.dart';
+import 'package:flutter_study/day1/View/User_LIst.dart';
 import 'package:flutter_study/day2/View/Doctor_Registration.dart';
 import 'package:flutter_study/day3/View/Appointment_Registration.dart'; 
 import 'package:flutter_study/day4/View/Payment_Registration.dart';
@@ -32,7 +33,7 @@ class DayListScreen extends StatelessWidget {
                 if (index == 0) {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (_) => UserRegistration()),
+                    MaterialPageRoute(builder: (_) => Userlist()),
                   );
                 } 
                 else if (index == 1) {

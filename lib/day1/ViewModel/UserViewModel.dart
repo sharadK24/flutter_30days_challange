@@ -1,44 +1,32 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_study/day1/Model/UserModel.dart';
 import 'package:flutter_study/day1/Repository/UserRepository.dart';
 
 class UserViewModel extends ChangeNotifier {
-  final repo = UserRepository();
-
+  final UserRepository repo = UserRepository();
   String name = "";
   String email = "";
   String password = "";
   String username = "";
   String address = "";
 
-  updateName(String v) {
+  List<UserModel> users = [];
+  void updateName(String v) {
     name = v;
-    notifyListeners();
   }
-
-  updateEmail(String v) {
+  void updateEmail(String v) {
     email = v;
-    notifyListeners();
   }
-
-  updatePassword(String v) {
+  void updatePassword(String v) {
     password = v;
-    notifyListeners();
   }
-
-  updateUsername(String v) {
+  void updateUsername(String v) {
     username = v;
-    notifyListeners();
   }
-
-  updatAddress(String v) {
+  void updateAddress(String v) {
     address = v;
-    notifyListeners();
   }
-
   Future<void> saveUser() async {
-    notifyListeners();
-
     final user = UserModel(
       name: name,
       email: email,
@@ -46,12 +34,9 @@ class UserViewModel extends ChangeNotifier {
       username: username,
       address: address,
     );
-
     await repo.addUser(user);
-    notifyListeners();
+    await fetchUsers();
   }
-   List<UserModel> users = [];
-
   Future<void> fetchUsers() async {
     users = await repo.getAllUsers();
     notifyListeners();

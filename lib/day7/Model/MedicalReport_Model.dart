@@ -1,7 +1,7 @@
 import 'package:hive/hive.dart';
 part 'MedicalReport_Model.g.dart';
 
-@HiveType(typeId: 6)
+@HiveType(typeId: 7)
 class MedicalReport {
   @HiveField(0)
   String reportId;
