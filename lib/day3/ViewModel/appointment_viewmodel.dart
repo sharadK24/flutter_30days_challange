@@ -1,10 +1,9 @@
-import 'package:flutter/widgets.dart';
-import 'package:flutter_study/day3/Repository/Appointment_repository.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_study/day3/Model/AppointmentModel.dart';
+import 'package:flutter_study/day3/Repository/Appointment_repository.dart';
 
 class AppointmentViewModel extends ChangeNotifier {
-
-  final  repo = AppointmentRepository();
+  final AppointmentRepository repo = AppointmentRepository();
 
   String appointmentId = "";
   String userId = "";
@@ -13,50 +12,45 @@ class AppointmentViewModel extends ChangeNotifier {
   String status = "";
   String time = "";
   String notes = "";
-  String bookingTimestamp = "";
+  String bookingTimestamp
 
-  updateAppointmentId(String v) {
+  get appointments => null; = "";
+
+  List<AppointmentModel> appointments = [];
+  void updateAppointmentId(String v) {
     appointmentId = v;
-    notifyListeners();
   }
 
-  updateUserId(String v) {
+  void updateUserId(String v) {
     userId = v;
-    notifyListeners();
   }
 
-  updateDoctorId(String v) {
+  void updateDoctorId(String v) {
     doctorId = v;
-    notifyListeners();
   }
 
-  updateAppointmentDate(String v) {
+  void updateAppointmentDate(String v) {
     appointmentDate = v;
-    notifyListeners();
   }
 
-  updateStatus(String v) {
+  void updateStatus(String v) {
     status = v;
-    notifyListeners();
   }
 
-  updateTime(String v) {
+  void updateTime(String v) {
     time = v;
-    notifyListeners();
   }
 
-  updateNotes(String v) {
+  void updateNotes(String v) {
     notes = v;
-    notifyListeners();
   }
 
-  updateBookingTimestamp(String v) {
+  void updateBookingTimestamp(String v) {
     bookingTimestamp = v;
-    notifyListeners();
   }
 
+  // 🔹 SAVE (UserViewModel → saveUser सारखं)
   Future<void> addAppointment() async {
-
     final appointment = AppointmentModel(
       appointmentId: appointmentId,
       userId: userId,
@@ -69,7 +63,11 @@ class AppointmentViewModel extends ChangeNotifier {
     );
 
     await repo.addAppointment(appointment);
+    await fetchAppointments(); // 🔥 important
+  }
+
+  Future<void> fetchAppointments() async {
+    appointments = await repo.getAllAppointments();
     notifyListeners();
   }
 }
- 

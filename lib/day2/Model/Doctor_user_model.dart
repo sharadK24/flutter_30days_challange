@@ -13,7 +13,7 @@ class Doctor_user_model {
   String specialization;
 
   @HiveField(3)
-  String doctoremail;
+  String doctorEmail;
 
   @HiveField(4)
   String clinicAddress;
@@ -37,7 +37,7 @@ class Doctor_user_model {
     required this.doctorId,
     required this.doctorName,
     required this.specialization,
-    required this.doctoremail,
+    required this.doctorEmail,
     required this.clinicAddress,
     required this.clinicCity,
     required this.fees,

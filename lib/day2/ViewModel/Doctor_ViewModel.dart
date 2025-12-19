@@ -1,17 +1,14 @@
-import 'package:flutter/widgets.dart';
-import 'package:flutter_study/day2/Model/Doctor_user_model.dart';
-import 'package:flutter_study/day2/Repository/Doctor_user_repository.dart';
+import 'package:flutter/cupertino.dart';
+import '../Model/Doctor_user_model.dart';
+import '../Repository/Doctor_user_repository.dart';
 
 class DoctorViewModel extends ChangeNotifier {
-  //Doctor डेटा सेव्ह करण्यासाठी
-  final repo = DoctorUserRepository();
+  final DoctorUserRepository repo = DoctorUserRepository();
 
-
-//हे सर्व व्हेरीएबल्स UI मधून युजर जे values भरतो ते ठेवतात.
   String doctorId = "";
   String doctorName = "";
   String specialization = "";
-  String doctoremail = "";
+  String doctorEmail = "";
   String clinicAddress = "";
   String clinicCity = "";
   String fees = "";
@@ -19,78 +16,37 @@ class DoctorViewModel extends ChangeNotifier {
   String availableDays = "";
   String gender = "";
 
+  List<Doctor_user_model> doctors = [];
 
-//doctorId ला नवीन value सेट करते
-  updateDoctorId(String v) {
-    doctorId = v;
-    notifyListeners();
-    //notifyListeners() UI ला सांगते की डेटा बदलला आहे → UI अपडेट होतो
-  }
+  void updateDoctorId(String v) => doctorId = v;
+  void updateDoctorName(String v) => doctorName = v;
+  void updateSpecialization(String v) => specialization = v;
+  void updateDoctorEmail(String v) => doctorEmail = v;
+  void updateClinicAddress(String v) => clinicAddress = v;
+  void updateClinicCity(String v) => clinicCity = v;
+  void updateFees(String v) => fees = v;
+  void updateTimings(String v) => timings = v;
+  void updateAvailableDays(String v) => availableDays = v;
+  void updateGender(String v) => gender = v;
 
-  updateDoctorName(String v) {
-    doctorName = v;
-    notifyListeners();
-  }
-
-  updateSpecialization(String v) {
-    specialization = v;
-    notifyListeners();
-  }
-
-  updateDoctoremail(String v) {
-    doctoremail = v;
-    notifyListeners();
-  }
-
-  updateClinicAddress(String v) {
-    clinicAddress = v;
-    notifyListeners();
-  }
-
-  updateClinicCity(String v) {
-    clinicCity = v;
-    notifyListeners();
-  }
-
-  updateFees(String v) {
-    fees = v;
-    notifyListeners();
-  }
-
-  updateTimings(String v) {
-    timings = v;
-    notifyListeners();
-  }
-
-  updateAvailableDays(String v) {
-    availableDays = v;
-    notifyListeners();
-  }
-
-  updDateGender(String v) {
-    gender = v;
-    notifyListeners();
-  }
-
-//सुरुवातीला UI ला सांगते की "काहीतरी process सुरू आहे
-  Future<void> saveDoctorUser() async {
-    notifyListeners();
-
-    final doctorUser = Doctor_user_model(
+  Future<void> saveDoctor() async {
+    final doctor = Doctor_user_model(
       doctorId: doctorId,
       doctorName: doctorName,
       specialization: specialization,
-      doctoremail: doctoremail,
+      doctorEmail: doctorEmail,
       clinicAddress: clinicAddress,
       clinicCity: clinicCity,
       fees: fees,
       timings: timings,
       availableDays: availableDays,
       gender: gender,
-      //object तयार केली जाते.
     );
-
-    await repo.addDoctorUser(doctorUser);
+    await repo.addDoctorUser(doctor);
+    await fetchDoctors();
+  }
+  Future<void> fetchDoctors() async {
+    doctors = await repo.getAllDoctorUsers();
     notifyListeners();
   }
 }
