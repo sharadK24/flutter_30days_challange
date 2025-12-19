@@ -1,76 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study/day4/Model/PaymentModel.dart';
-import 'package:flutter_study/day4/Repository/Payment_repository.dart';
+import 'package:provider/provider.dart';
+import '../ViewModel/Payment_viewmodel.dart';
 
 class PaymentRegistration extends StatefulWidget {
   const PaymentRegistration({super.key});
 
   @override
-  State<PaymentRegistration> createState() => _PaymentRegistrationState();
+  State<PaymentRegistration> createState() =>
+      _PaymentRegistrationState();
 }
 
 class _PaymentRegistrationState extends State<PaymentRegistration> {
-  final PaymentRepository repo = PaymentRepository();
   final _formKey = GlobalKey<FormState>();
 
-  final TextEditingController paymentId = TextEditingController();
-  final TextEditingController userId = TextEditingController();
-  final TextEditingController appointmentId = TextEditingController();
-  final TextEditingController amount = TextEditingController();
-  final TextEditingController paymentDate = TextEditingController();
-  final TextEditingController paymentMethod = TextEditingController();
-  final TextEditingController status = TextEditingController();
-  final TextEditingController transactionId = TextEditingController();
-  Future<void> registerPayment() async {
-    if (_formKey.currentState!.validate()) {
-      final payment = PaymentModel(
-        paymentId: paymentId.text,
-        userId: userId.text,
-        appointmentId: appointmentId.text,
-        amount: double.parse(amount.text),
-        paymentDate: paymentDate.text,
-        paymentMethod: paymentMethod.text,
-        status: status.text,
-        transactionId: transactionId.text,
-      );
-      await repo.addPayment(payment);
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("Payment Registered Successfully!"),
-          backgroundColor: Colors.green,
-        ),
-      );
-      _formKey.currentState!.reset();
-    }
-  }
-  Widget buildTextField(
-    String label,
-    TextEditingController controller, {
-    TextInputType type = TextInputType.text,
-  }) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 12),
-      child: TextFormField(
-        controller: controller,
-        keyboardType: type,
-        decoration: InputDecoration(
-          labelText: label,
-          border: const OutlineInputBorder(),
-        ),
-        validator: (value) {
-          if (value == null || value.isEmpty) {
-            return "Please enter $label";
-          }
-          return null;
-        },
-      ),
+  InputDecoration input(String label) {
+    return InputDecoration(
+      labelText: label,
+      border: const OutlineInputBorder(),
     );
   }
+
   @override
   Widget build(BuildContext context) {
+    final vm = Provider.of<PaymentViewModel>(context, listen: false);
+
     return Scaffold(
-      appBar: AppBar(title: const Text('Payment Registration')),
+      appBar: AppBar(title: const Text("Add Payment")),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Form(
@@ -78,22 +33,57 @@ class _PaymentRegistrationState extends State<PaymentRegistration> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                buildTextField("Payment ID", paymentId),
-                buildTextField("User ID", userId),
-                buildTextField("Appointment ID", appointmentId),
-                buildTextField(
-                  "Amount",
-                  amount,
-                  type: TextInputType.number,
+                TextFormField(
+                  decoration: input("Appointment ID"),
+                  onChanged: vm.updateAppointmentId,
+                  validator: (v) =>
+                  v == null || v.isEmpty ? "Required" : null,
                 ),
-                buildTextField("Payment Date", paymentDate),
-                buildTextField("Payment Method", paymentMethod),
-                buildTextField("Status", status),
-                buildTextField("Transaction ID", transactionId),
-                const SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: registerPayment,
-                  child: const Text("Register Payment"),
+                const SizedBox(height: 12),
+
+                TextFormField(
+                  decoration: input("User ID"),
+                  onChanged: vm.updateUserId,
+                ),
+                const SizedBox(height: 12),
+
+                TextFormField(
+                  decoration: input("Amount"),
+                  keyboardType: TextInputType.number,
+                  onChanged: (v) =>
+                      vm.updateAmount(double.tryParse(v) ?? 0.0),
+                ),
+                const SizedBox(height: 12),
+
+                TextFormField(
+                  decoration: input("Payment Method (UPI / CARD)"),
+                  onChanged: vm.updatePaymentMethod,
+                ),
+                const SizedBox(height: 12),
+
+                TextFormField(
+                  decoration: input("Payment Date"),
+                  onChanged: vm.updatePaymentDate,
+                ),
+                const SizedBox(height: 12),
+
+                TextFormField(
+                  decoration: input("Status"),
+                  onChanged: vm.updateStatus,
+                ),
+                const SizedBox(height: 24),
+
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      if (_formKey.currentState!.validate()) {
+                        await vm.addPayment(); // ✅ correct
+                        Navigator.pop(context);
+                      }
+                    },
+                    child: const Text("Save Payment"),
+                  ),
                 ),
               ],
             ),

@@ -7,7 +7,7 @@ class PaymentModel {
   String paymentId;
 
   @HiveField(1)
-  String  userId;
+  String userId;
 
   @HiveField(2)
   String appointmentId;
@@ -29,7 +29,7 @@ class PaymentModel {
 
   PaymentModel({
     required this.paymentId,
-    required this. userId,
+    required this.userId,
     required this.appointmentId,
     required this.amount,
     required this.paymentDate,

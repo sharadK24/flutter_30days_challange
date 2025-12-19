@@ -1,70 +1,57 @@
-import 'package:flutter/widgets.dart';
-import 'package:flutter_study/day4/Repository/Payment_repository.dart';
-import 'package:flutter_study/day4/Model/PaymentModel.dart';
+import 'package:flutter/material.dart';
+import '../Model/PaymentModel.dart';
+import '../Repository/Payment_repository.dart';
 
 class PaymentViewModel extends ChangeNotifier {
-  final repo = PaymentRepository();
+  final PaymentRepository repo = PaymentRepository();
 
+  // 🔹 PaymentModel शी match होणारे variables
   String paymentId = "";
   String userId = "";
   String appointmentId = "";
-  String amount = "";
+  double amount = 0.0;
   String paymentDate = "";
   String paymentMethod = "";
   String status = "";
   String transactionId = "";
 
-  updatePaymentId(String v) {
-    paymentId = v;
-    notifyListeners();
-  }
+  // 🔹 Payment list
+  List<PaymentModel> payments = [];
 
-  updateUserId(String v) {
-    userId = v;
-    notifyListeners();
-  }
+  // 🔹 Update methods
+  void updatePaymentId(String v) => paymentId = v;
+  void updateUserId(String v) => userId = v;
+  void updateAppointmentId(String v) => appointmentId = v;
+  void updateAmount(double v) => amount = v;
+  void updatePaymentDate(String v) => paymentDate = v;
+  void updatePaymentMethod(String v) => paymentMethod = v;
+  void updateStatus(String v) => status = v;
+  void updateTransactionId(String v) => transactionId = v;
 
-  updateAppointmentId(String v) {
-    appointmentId = v;
-    notifyListeners();
-  }
-
-  updateAmount(String v) {
-    amount = v;
-    notifyListeners();
-  }
-
-  updatePaymentDate(String v) {
-    paymentDate = v;
-    notifyListeners();
-  }
-
-  updatePaymentMethod(String v) {
-    paymentMethod = v;
-    notifyListeners();
-  }
-
-  updateStatus(String v) {
-    status = v;
-    notifyListeners();
-  }
-
-  updateTransactionId(String v) {
-    transactionId = v;
-    notifyListeners();
-  }
-
+  // 🔹 ADD PAYMENT
   Future<void> addPayment() async {
     final payment = PaymentModel(
-      paymentId: paymentId,
+      paymentId: paymentId.isEmpty
+          ? DateTime.now().millisecondsSinceEpoch.toString()
+          : paymentId,
       userId: userId,
       appointmentId: appointmentId,
-      amount: double.parse(amount),
+      amount: amount,
       paymentDate: paymentDate,
       paymentMethod: paymentMethod,
-      status: status,
-      transactionId: transactionId,
+      status: status.isEmpty ? "PAID" : status,
+      transactionId: transactionId.isEmpty
+          ? "TXN${DateTime.now().millisecondsSinceEpoch}"
+          : transactionId,
     );
+
     await repo.addPayment(payment);
+    await fetchPayments();
+  }
+
+  // 🔹 FETCH PAYMENTS
+  Future<void> fetchPayments() async {
+    payments = await repo.getAllPayments();
+    notifyListeners();
   }
 }

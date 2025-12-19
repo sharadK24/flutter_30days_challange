@@ -15,7 +15,7 @@ class _DoctorRegistrationState extends State<DoctorRegistration> {
 
   String? selectedGender;
 
-  bool genderValidation = false; // NEW FLAG
+  bool genderValidation = false;
 
   final TextEditingController doctorId = TextEditingController();
   final TextEditingController name = TextEditingController();
@@ -35,14 +35,13 @@ class _DoctorRegistrationState extends State<DoctorRegistration> {
       final doctor = Doctor_user_model(
         doctorId: doctorId.text,
         doctorName: name.text,
-        doctoremail: email.text,
         specialization: specialization.text,
         clinicAddress: clinicAddress.text,
         clinicCity: clinicCity.text,
         fees: fees.text,
         timings: timings.text,
         availableDays: availableDays.text,
-        gender: selectedGender!,
+        gender: selectedGender!, doctorEmail: 'doctorEmail',
       );
 
       await repo.addDoctorUser(doctor);
@@ -97,8 +96,6 @@ class _DoctorRegistrationState extends State<DoctorRegistration> {
       ),
     );
   }
-
-  // Text Field
   Widget buildTextField(String label, TextEditingController controller) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
@@ -113,8 +110,6 @@ class _DoctorRegistrationState extends State<DoctorRegistration> {
       ),
     );
   }
-
-  // Email Field
   Widget buildEmailField(String label, TextEditingController controller) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
@@ -135,8 +130,6 @@ class _DoctorRegistrationState extends State<DoctorRegistration> {
       ),
     );
   }
-
-  // Number Field
   Widget buildNumberField(String label, TextEditingController controller) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
@@ -155,8 +148,6 @@ class _DoctorRegistrationState extends State<DoctorRegistration> {
       ),
     );
   }
-
-  // Gender Field
   Widget buildGenderField() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -187,8 +178,6 @@ class _DoctorRegistrationState extends State<DoctorRegistration> {
             const Text("Other"),
           ],
         ),
-
-        // Show error ONLY after clicking Register button
         if (genderValidation && selectedGender == null)
           const Padding(
             padding: EdgeInsets.only(left: 12),

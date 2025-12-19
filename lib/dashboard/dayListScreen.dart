@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_study/day1/View/UserRegistration.dart';
 import 'package:flutter_study/day1/View/User_LIst.dart';
 import 'package:flutter_study/day2/View/Doctor_Registration.dart';
-import 'package:flutter_study/day3/View/Appointment_Registration.dart'; 
-import 'package:flutter_study/day4/View/Payment_Registration.dart';
+import 'package:flutter_study/day3/View/Appointment_Registration.dart';
 import 'package:flutter_study/day5/View/Prescription_registration.dart';
 import 'package:flutter_study/day6/View/Clinic_Registration.dart';
 import 'package:flutter_study/day7/View/MedicalReport_Registration.dart';
@@ -48,13 +47,7 @@ class DayListScreen extends StatelessWidget {
                     MaterialPageRoute(builder: (_) => AppointmentRegistration()),
                   );
                 }
-                else if (index == 3) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => PaymentRegistration()),
-                  );
-                }
-                else if (index == 4) {
+                if (index == 4) {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (_) => PrescriptionRegistration()),
