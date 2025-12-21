@@ -36,19 +36,19 @@ class _UserlistState extends State<AppoinmentList> {
       ),
       body: Consumer<AppointmentViewModel>(
         builder: (context, vm, child) {
-          if (vm.Appo.isEmpty) {
+          if (vm.appointmentId.isEmpty) {
             return const Center(child: Text("No appointments Found"));
           }
           return ListView.builder(
-            itemCount: vm.Appo .length,
+            itemCount: vm.appointmentId .length,
             itemBuilder: (context, index) {
-              final appointments = vm.Appo[index];
+              final user = vm.appointmentId[index];
               return Card(
                 margin:
                 const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                 child: ListTile(
-                  title: Text(appointments.appointmentId),
-                  subtitle: Text(appointments.doctorId),
+                  title: Text(user.name),
+                  subtitle: Text(user.email),
                 ),
               );
             },
@@ -57,6 +57,12 @@ class _UserlistState extends State<AppoinmentList> {
       ),
     );
   }
+}
+
+extension on String {
+  String get name => AutofillHints.name;
+
+  String get email => AutofillHints.email;
 }
 
 extension on AppointmentViewModel {

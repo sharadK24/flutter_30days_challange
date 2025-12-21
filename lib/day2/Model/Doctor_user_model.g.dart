@@ -41,16 +41,18 @@ class DoctorusermodelAdapter extends TypeAdapter<Doctor_user_model> {
       ..writeByte(2)
       ..write(obj.specialization)
       ..writeByte(3)
-      ..write(obj.clinicAddress)
+      ..write(obj.doctorEmail)
       ..writeByte(4)
-      ..write(obj.clinicCity)
+      ..write(obj.clinicAddress)
       ..writeByte(5)
-      ..write(obj.fees)
+      ..write(obj.clinicCity)
       ..writeByte(6)
-      ..write(obj.timings)
+      ..write(obj.fees)
       ..writeByte(7)
-      ..write(obj.availableDays)
+      ..write(obj.timings)
       ..writeByte(8)
+      ..write(obj.availableDays)
+      ..writeByte(9)
       ..write(obj.gender);
   }
 
