@@ -10,10 +10,14 @@ class PostProvider extends ChangeNotifier {
   List<PostModel> _posts = [];
 
   List<PostModel> get posts => _posts;
+
+  /// Load from Hive (Offline First)
   void loadFromHive() {
     _posts = _postBox.values.toList();
     notifyListeners();
   }
+
+  /// Fetch from API & Save to Hive
   Future<void> fetchPosts() async {
     try {
       final data = await _apiService.fetchPosts();
