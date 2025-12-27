@@ -19,7 +19,7 @@ class UserModel {
       emailid: json['emailid'],
       username: json['username'],
       city: json['city'],
-      mobileno: json['mobileno'],
+     // mobileno: json['mobileno'],
     );
   }
 
@@ -29,7 +29,8 @@ class UserModel {
       "emailid": emailid,
       "username": username,
       "city": city,
-      "mobileno": mobileno,
+    //  "mobileno": mobileno,
+
     };
   }
 }
