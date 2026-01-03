@@ -6,11 +6,11 @@ class UserModel {
   final String mobileno;
 
   UserModel({
-    required this.name,
+    //required this.name,
     required this.emailid,
-    required this.username,
+    //required this.username,
     required this.city,
-    required this.mobileno,
+    //required this.mobileno,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
