@@ -25,11 +25,11 @@ class UserModel {
 
   Map<String, dynamic> toJson() {
     return {
-      "name": name,
-      "emailid": emailid,
-      "username": username,
-      "city": city,
-      "mobileno": mobileno,
+     // // "name": name,
+     //  "emailid": emailid,
+     //  "username": username,
+     //  "city": city,
+     //  "mobileno": mobileno,
 
     };
   }
