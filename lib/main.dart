@@ -1,6 +1,6 @@
-// import 'package:flutter/material.dart';
-// import 'requisition_details_page.dart';
-//
+import 'package:flutter/material.dart';
+import 'requisition_details_page.dart';
+
 // import 'package:flutter_study/day1/Model/UserModel.dart';
 // import 'package:flutter_study/day1/ViewModel/UserViewModel.dart';
 // import 'package:flutter_study/day2/Model/Doctor_user_model.dart';
@@ -14,7 +14,7 @@
 // import 'package:hive/hive.dart';
 // import 'package:hive_flutter/hive_flutter.dart';
 // import 'package:provider/provider.dart';
-//
+
 // void main() async {
 //   WidgetsFlutterBinding.ensureInitialized();
 //
@@ -38,21 +38,21 @@
 //     ),
 //   );
 // }
-//
-// class MyApp extends StatelessWidget {
-//   const MyApp({super.key});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       theme: ThemeData(
-//         colorScheme: ColorScheme.fromSeed(
-//           seedColor: Colors.deepPurple,
-//         ),
-//       ),
-//       // home: DayListScreen(),
-//       home: const RequisitionDetailsPage(),
-//     );
-//   }
-// }
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.deepPurple,
+        ),
+      ),
+      // home: DayListScreen(),
+      home: const RequisitionDetailsPage(),
+    );
+  }
+}
