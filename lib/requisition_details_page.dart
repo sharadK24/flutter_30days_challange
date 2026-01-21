@@ -16,49 +16,49 @@ class _RequisitionDetailsPageState extends State<RequisitionDetailsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFF2F2F2),
-      // ody: SafeArea(
-      //   child: Column(
+      body: SafeArea(
+        child: Column(
           children: [
             _header(),
             Expanded(
-  //             child: SingleChildScrollView(
-  //               padding: const EdgeInsets.all(16),
-  //               child: Column(
-  //                 children: [
-  //                   _dropdown("Position Title", "Consulting - .Net"),
-  //                   _dropdown("Position Criticality", "Critical"),
-  //                   _rowFields(
-  //                     _dropdown("Main Skill Set", skill),
-  //                     _dropdown("Department Name", department),
-  //                   ),
-  //                   _dropdown("Position Location", "Head Office"),
-  //                   _rowFields(
-  //                     _textField("Number Of Position"),
-  //                     _textField("Additional Skillset"),
-  //                   ),
-  //                   _rowFields(
-  //                     _textField("Band"),
-  //                     _textField("To Be Filled (Days)"),
-  //                   ),
-  //                   _rowFields(
-  //                     _textField("Salary (Lakh/Yr)"),
-  //                     _textField("Experience (Years)"),
-  //                   ),
-  //                   const SizedBox(height: 16),
-  //                   _approvalHistory(),
-  //                   const SizedBox(height: 16),
-  //                   _remarkBox(),
-  //                   const SizedBox(height: 80),
-  //                 ],
-  //               ),
-  //             ),
-  //           ),
-  //           _bottomButtons()
-  //         ],
-  //       ),
-  //     ),
-  //   );
-  // }
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  children: [
+                    _dropdown("Position Title", "Consulting - .Net"),
+                    _dropdown("Position Criticality", "Critical"),
+                    _rowFields(
+                      _dropdown("Main Skill Set", skill),
+                      _dropdown("Department Name", department),
+                    ),
+                    _dropdown("Position Location", "Head Office"),
+                    _rowFields(
+                      _textField("Number Of Position"),
+                      _textField("Additional Skillset"),
+                    ),
+                    _rowFields(
+                      _textField("Band"),
+                      _textField("To Be Filled (Days)"),
+                    ),
+                    _rowFields(
+                      _textField("Salary (Lakh/Yr)"),
+                      _textField("Experience (Years)"),
+                    ),
+                    const SizedBox(height: 16),
+                    _approvalHistory(),
+                    const SizedBox(height: 16),
+                    _remarkBox(),
+                    const SizedBox(height: 80),
+                  ],
+                ),
+              ),
+            ),
+            _bottomButtons()
+          ],
+        ),
+      ),
+    );
+  }
 
   Widget _header() {
     return Container(
