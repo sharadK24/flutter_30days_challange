@@ -1,4 +1,3 @@
-/*
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'PaymentModel.dart';
@@ -61,4 +60,3 @@ class PaymentModelAdapter extends TypeAdapter<PaymentModel> {
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
-*/
