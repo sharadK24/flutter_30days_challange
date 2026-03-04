@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       // home: DayListScreen(),
-      home: const RequisitionDetailsPage(),
+      home: const LoginPage(),
     );
   }
 }
