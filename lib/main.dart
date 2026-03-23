@@ -1,4 +1,3 @@
-/*
 import 'package:flutter/material.dart';
 import 'requisition_details_page.dart';
 
@@ -57,4 +56,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-*/
