@@ -1,3 +1,4 @@
+/*
 import 'package:hive/hive.dart';
 part 'AppointmentModel.g.dart';
 
@@ -38,3 +39,4 @@ class AppointmentModel {
     required this.bookingTimestamp,
   });
 }
+*/

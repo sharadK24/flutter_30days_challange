@@ -1,3 +1,4 @@
+/*
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'AppointmentModel.dart';
@@ -60,3 +61,4 @@ class AppointmentModelAdapter extends TypeAdapter<AppointmentModel> {
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
+*/
